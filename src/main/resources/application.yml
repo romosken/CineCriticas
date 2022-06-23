@@ -1,1 +1,7 @@
+server:
+    port: 9080
 
+omdb:
+    api:
+        url: "http://www.omdbapi.com",
+        key: "b4e38b9b"
