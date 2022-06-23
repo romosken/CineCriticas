@@ -3,10 +3,9 @@ package com.mosken.rodrigo.letscode.challenge.cinecriticas.adapters.omdbapi.clie
 import com.mosken.rodrigo.letscode.challenge.cinecriticas.adapters.omdbapi.exception.OmdbApiException;
 import com.mosken.rodrigo.letscode.challenge.cinecriticas.adapters.omdbapi.models.OmdbMovie;
 import com.mosken.rodrigo.letscode.challenge.cinecriticas.adapters.omdbapi.models.OmdbRatings;
-import com.mosken.rodrigo.letscode.challenge.cinecriticas.usecases.returnOmdbMovies.port.IOmdbData;
-import com.mosken.rodrigo.letscode.challenge.cinecriticas.usecases.returnOmdbMovies.port.OmdbDataResponse;
+import com.mosken.rodrigo.letscode.challenge.cinecriticas.usecases.returnomdbmovie.port.IOmdbData;
+import com.mosken.rodrigo.letscode.challenge.cinecriticas.usecases.returnomdbmovie.port.OmdbDataResponse;
 import lombok.RequiredArgsConstructor;
-import org.jetbrains.annotations.NotNull;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 
@@ -23,7 +22,7 @@ public class OmdbDataImpl implements IOmdbData {
     private String apiKey;
     private final IOmdbApi iOmdbApi;
 
-    private final String NULL_CONTENT = "Movie not found!";
+    private static final String NULL_CONTENT = "Movie not found!";
 
     @Override
     public OmdbDataResponse getOmdbData(String movieName, String movieId, String movieYear){

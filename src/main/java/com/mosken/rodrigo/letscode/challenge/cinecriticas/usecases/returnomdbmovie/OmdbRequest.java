@@ -1,4 +1,4 @@
-package com.mosken.rodrigo.letscode.challenge.cinecriticas.usecases.returnOmdbMovies;
+package com.mosken.rodrigo.letscode.challenge.cinecriticas.usecases.returnomdbmovie;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;

@@ -1,7 +1,6 @@
 package com.mosken.rodrigo.letscode.challenge.cinecriticas.entities;
 
 import com.mosken.rodrigo.letscode.challenge.cinecriticas.entities.exceptions.MovieException;
-import com.mosken.rodrigo.letscode.challenge.cinecriticas.usecases.returnOmdbMovies.port.OmdbDataResponse;
 import lombok.*;
 
 import java.util.List;

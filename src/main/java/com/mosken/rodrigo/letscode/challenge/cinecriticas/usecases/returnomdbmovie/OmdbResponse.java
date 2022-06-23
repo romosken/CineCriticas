@@ -1,8 +1,5 @@
-package com.mosken.rodrigo.letscode.challenge.cinecriticas.usecases.returnOmdbMovies.port;
+package com.mosken.rodrigo.letscode.challenge.cinecriticas.usecases.returnomdbmovie;
 
-
-import com.fasterxml.jackson.annotation.JsonProperty;
-import com.mosken.rodrigo.letscode.challenge.cinecriticas.adapters.omdbapi.models.OmdbRatings;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -10,11 +7,13 @@ import lombok.NoArgsConstructor;
 
 import java.util.List;
 
+
 @Data
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
-public class OmdbDataResponse {
+public class OmdbResponse {
+
 
     private String title;
     private String year;
@@ -30,7 +29,7 @@ public class OmdbDataResponse {
     private String country;
     private String awards;
     private String poster;
-    private List<MovieRatings> ratings;
+    private List<RatingResponse> ratings;
     private String metascore;
     private String imdbRating;
     private String imdbVotes;
@@ -40,18 +39,17 @@ public class OmdbDataResponse {
     private String boxOffice;
     private String production;
     private String website;
+    private String response;
 
     @Data
     @Builder
     @NoArgsConstructor
     @AllArgsConstructor
-    public static class MovieRatings {
+    public static class RatingResponse {
 
         private String source;
         private String value;
 
     }
-
-
 
 }

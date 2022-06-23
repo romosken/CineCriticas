@@ -1,10 +1,10 @@
-package com.mosken.rodrigo.letscode.challenge.cinecriticas.usecases.returnOmdbMovies;
+package com.mosken.rodrigo.letscode.challenge.cinecriticas.usecases.returnomdbmovie;
 
 
 import com.mosken.rodrigo.letscode.challenge.cinecriticas.entities.Movie;
 import com.mosken.rodrigo.letscode.challenge.cinecriticas.entities.Rating;
-import com.mosken.rodrigo.letscode.challenge.cinecriticas.usecases.returnOmdbMovies.port.IOmdbData;
-import com.mosken.rodrigo.letscode.challenge.cinecriticas.usecases.returnOmdbMovies.port.OmdbDataResponse;
+import com.mosken.rodrigo.letscode.challenge.cinecriticas.usecases.returnomdbmovie.port.IOmdbData;
+import com.mosken.rodrigo.letscode.challenge.cinecriticas.usecases.returnomdbmovie.port.OmdbDataResponse;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 

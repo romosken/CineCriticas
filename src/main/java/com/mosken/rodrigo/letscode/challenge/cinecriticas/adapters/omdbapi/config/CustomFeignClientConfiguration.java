@@ -1,12 +1,8 @@
 package com.mosken.rodrigo.letscode.challenge.cinecriticas.adapters.omdbapi.config;
 
 import feign.Request;
-import feign.RetryableException;
 import feign.Retryer;
-import feign.codec.ErrorDecoder;
 import feign.okhttp.OkHttpClient;
-import org.springframework.boot.autoconfigure.ImportAutoConfiguration;
-import org.springframework.cloud.openfeign.FeignAutoConfiguration;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.web.servlet.config.annotation.CorsRegistry;

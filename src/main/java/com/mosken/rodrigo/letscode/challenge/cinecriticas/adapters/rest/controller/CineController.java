@@ -2,9 +2,9 @@ package com.mosken.rodrigo.letscode.challenge.cinecriticas.adapters.rest.control
 
 
 import com.mosken.rodrigo.letscode.challenge.cinecriticas.adapters.exceptions.InvalidResourceException;
-import com.mosken.rodrigo.letscode.challenge.cinecriticas.usecases.returnOmdbMovies.IOmdb;
-import com.mosken.rodrigo.letscode.challenge.cinecriticas.usecases.returnOmdbMovies.OmdbRequest;
-import com.mosken.rodrigo.letscode.challenge.cinecriticas.usecases.returnOmdbMovies.OmdbResponse;
+import com.mosken.rodrigo.letscode.challenge.cinecriticas.usecases.returnomdbmovie.IOmdb;
+import com.mosken.rodrigo.letscode.challenge.cinecriticas.usecases.returnomdbmovie.OmdbRequest;
+import com.mosken.rodrigo.letscode.challenge.cinecriticas.usecases.returnomdbmovie.OmdbResponse;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -21,7 +21,7 @@ public class CineController {
 
     private final IOmdb iOmdb;
 
-    private final String ID_AND_TITLE_NULL = "At least one argument is required! (id or title)";
+    private static final String ID_AND_TITLE_NULL = "At least one argument is required! (id or title)";
 
 
     @GetMapping("/search/movie")
