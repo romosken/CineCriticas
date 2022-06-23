@@ -1,8 +1,18 @@
 package com.mosken.rodrigo.letscode.challenge.cinecriticas.adapters.omdbapi.models;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
+import lombok.AllArgsConstructor;
+import lombok.Builder;
+import lombok.Data;
+import lombok.NoArgsConstructor;
 
-public class Movie {
+import java.util.List;
+
+@Data
+@Builder
+@NoArgsConstructor
+@AllArgsConstructor
+public class OmdbMovie {
 
     @JsonProperty("Title")
     private String title;
@@ -11,7 +21,7 @@ public class Movie {
     private String year;
 
     @JsonProperty("Rated")
-    private String Rated;
+    private String rated;
 
     @JsonProperty("Released")
     private String released;
@@ -47,7 +57,7 @@ public class Movie {
     private String poster;
 
     @JsonProperty("Ratings")
-    private Ratings ratings;
+    private List<OmdbRatings> ratings;
 
     @JsonProperty("Metascore")
     private String metascore;
