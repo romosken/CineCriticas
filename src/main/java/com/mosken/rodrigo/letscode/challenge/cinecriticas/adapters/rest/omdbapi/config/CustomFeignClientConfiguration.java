@@ -1,4 +1,4 @@
-package com.mosken.rodrigo.letscode.challenge.cinecriticas.adapters.omdbapi.config;
+package com.mosken.rodrigo.letscode.challenge.cinecriticas.adapters.rest.omdbapi.config;
 
 import feign.Request;
 import feign.Retryer;

@@ -18,7 +18,8 @@ import java.util.Objects;
 @ControllerAdvice
 @RequiredArgsConstructor
 public class CustomRestControllerErrorHandler {
-//    private final String
+
+    //TODO adicionar logs
 
     @ExceptionHandler(value = {InvalidResourceException.class, DatabaseException.class, EntityException.class})
     protected ResponseEntity<ApiErrorResponse> handleBadRequestException(Exception e){

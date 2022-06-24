@@ -1,7 +1,7 @@
 package com.mosken.rodrigo.letscode.challenge.cinecriticas.adapters.rest.controller;
 
 
-import com.mosken.rodrigo.letscode.challenge.cinecriticas.adapters.dto.UserDto;
+import com.mosken.rodrigo.letscode.challenge.cinecriticas.adapters.mysql.dto.UserDto;
 import com.mosken.rodrigo.letscode.challenge.cinecriticas.adapters.exceptions.InvalidResourceException;
 import com.mosken.rodrigo.letscode.challenge.cinecriticas.usecases.returnomdbmovie.IOmdb;
 import com.mosken.rodrigo.letscode.challenge.cinecriticas.usecases.returnomdbmovie.OmdbRequest;
@@ -20,6 +20,7 @@ import java.util.Objects;
 @RequiredArgsConstructor
 public class CineController {
 
+    //TODO adicionar logs
     private final IOmdb iOmdb;
 
     private final ISignIn iSignIn;

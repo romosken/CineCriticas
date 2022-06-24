@@ -1,9 +1,9 @@
-package com.mosken.rodrigo.letscode.challenge.cinecriticas.adapters.services;
+package com.mosken.rodrigo.letscode.challenge.cinecriticas.adapters.mysql.services;
 
 import com.mosken.rodrigo.letscode.challenge.cinecriticas.adapters.exceptions.DuplicateEntryException;
 import com.mosken.rodrigo.letscode.challenge.cinecriticas.adapters.exceptions.RoleRepositoryException;
-import com.mosken.rodrigo.letscode.challenge.cinecriticas.adapters.repositories.RoleRepository;
-import com.mosken.rodrigo.letscode.challenge.cinecriticas.adapters.repositories.UserRepository;
+import com.mosken.rodrigo.letscode.challenge.cinecriticas.adapters.mysql.repositories.RoleRepository;
+import com.mosken.rodrigo.letscode.challenge.cinecriticas.adapters.mysql.repositories.UserRepository;
 import com.mosken.rodrigo.letscode.challenge.cinecriticas.entities.db.ERole;
 import com.mosken.rodrigo.letscode.challenge.cinecriticas.entities.db.Role;
 import com.mosken.rodrigo.letscode.challenge.cinecriticas.entities.db.User;

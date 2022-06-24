@@ -1,4 +1,4 @@
-package com.mosken.rodrigo.letscode.challenge.cinecriticas.adapters.dto;
+package com.mosken.rodrigo.letscode.challenge.cinecriticas.adapters.mysql.dto;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;

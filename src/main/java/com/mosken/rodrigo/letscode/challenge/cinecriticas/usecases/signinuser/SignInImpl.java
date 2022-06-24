@@ -15,10 +15,11 @@ public class SignInImpl implements ISignIn{
     private static final String USER_ALREADY_EXISTS = "Username already exists in database!";
     @Override
     public SignInResponse signIn(SignInRequest request) {
-
+        //TODO adicionar logs
         if(iSignInService.userExists(request.getUsername()))
             throw new UserException(USER_ALREADY_EXISTS);
         var validatedUser = buildUser(request);
+        //TODO adicionar segurança nas senhas
         var response = iSignInService.createUser(validatedUser);
         return buildSignInResponse(response);
     }

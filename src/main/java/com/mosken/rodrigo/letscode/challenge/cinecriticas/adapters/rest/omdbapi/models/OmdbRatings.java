@@ -1,4 +1,4 @@
-package com.mosken.rodrigo.letscode.challenge.cinecriticas.adapters.omdbapi.models;
+package com.mosken.rodrigo.letscode.challenge.cinecriticas.adapters.rest.omdbapi.models;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.AllArgsConstructor;

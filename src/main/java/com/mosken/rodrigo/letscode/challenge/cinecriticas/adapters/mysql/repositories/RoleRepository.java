@@ -1,4 +1,4 @@
-package com.mosken.rodrigo.letscode.challenge.cinecriticas.adapters.repositories;
+package com.mosken.rodrigo.letscode.challenge.cinecriticas.adapters.mysql.repositories;
 
 import com.mosken.rodrigo.letscode.challenge.cinecriticas.entities.db.ERole;
 import com.mosken.rodrigo.letscode.challenge.cinecriticas.entities.db.Role;
