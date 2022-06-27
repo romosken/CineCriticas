@@ -2,7 +2,7 @@ package com.mosken.rodrigo.letscode.challenge.cinecriticas.usecases.returnomdbmo
 
 
 import com.mosken.rodrigo.letscode.challenge.cinecriticas.entities.Movie;
-import com.mosken.rodrigo.letscode.challenge.cinecriticas.entities.Rating;
+import com.mosken.rodrigo.letscode.challenge.cinecriticas.entities.MovieRating;
 import com.mosken.rodrigo.letscode.challenge.cinecriticas.usecases.returnomdbmovie.port.IOmdbData;
 import com.mosken.rodrigo.letscode.challenge.cinecriticas.usecases.returnomdbmovie.port.OmdbDataResponse;
 import lombok.RequiredArgsConstructor;
@@ -58,10 +58,10 @@ public class OmdbImpl implements IOmdb{
                 .build();
 
     }
-    private List<Rating> buildRatingEntityList(List<OmdbDataResponse.MovieRatings> response) {
+    private List<MovieRating> buildRatingEntityList(List<OmdbDataResponse.MovieRatings> response) {
         if(Objects.isNull(response))
             return Collections.emptyList();
-        return response.stream().map(rating -> Rating
+        return response.stream().map(rating -> MovieRating
                 .builder()
                 .source(rating.getSource())
                 .value(rating.getValue())
@@ -98,7 +98,7 @@ public class OmdbImpl implements IOmdb{
                 .build();
 
     }
-    private List<OmdbResponse.RatingResponse> buildRatingResponseList(List<Rating> response) {
+    private List<OmdbResponse.RatingResponse> buildRatingResponseList(List<MovieRating> response) {
         return response.stream().map(rating -> OmdbResponse.RatingResponse
                 .builder()
                 .source(rating.getSource())

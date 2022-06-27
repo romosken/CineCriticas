@@ -1,23 +1,38 @@
 package com.mosken.rodrigo.letscode.challenge.cinecriticas.entities.db;
 
 
-import lombok.*;
+import com.mosken.rodrigo.letscode.challenge.cinecriticas.domain.enums.ERole;
+import com.mosken.rodrigo.letscode.challenge.cinecriticas.entities.exceptions.UserException;
+import lombok.Builder;
+import lombok.Data;
 
-import javax.persistence.*;
+import java.util.Objects;
 
-@Entity
-@Table(name = "Role")
+
 @Builder
-@AllArgsConstructor
-@NoArgsConstructor
+@Data
 public class Role {
-
-    @Id
-    @Enumerated(EnumType.STRING)
     private ERole name;
+    public Role(ERole name) {
+        setName(name);
+    }
 
-    @Override
-    public String toString(){
-        return name.toString();
+    public void setName(ERole name) {
+        validateAttributeObject(name, "ROLE_NAME");
+        this.name = name;
+    }
+
+    private void validateAttributeObject(Object attribute, String attributeName) {
+        if (Objects.isNull(attribute))
+            throw new UserException(attributeName + " cannot be null or empty!");
+
+    }
+
+    public static class RoleBuilder {
+        public Role build() {
+            return new Role(
+                    name
+            );
+        }
     }
 }

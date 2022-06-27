@@ -1,4 +1,4 @@
-package com.mosken.rodrigo.letscode.challenge.cinecriticas.entities.db;
+package com.mosken.rodrigo.letscode.challenge.cinecriticas.domain.enums;
 
 public enum ERole {
     LEITOR("LEITOR"),

@@ -1,12 +1,10 @@
 package com.mosken.rodrigo.letscode.challenge.cinecriticas.usecases.signinuser.port;
 
-import com.mosken.rodrigo.letscode.challenge.cinecriticas.entities.db.ERole;
-import com.mosken.rodrigo.letscode.challenge.cinecriticas.entities.db.Role;
-import com.mosken.rodrigo.letscode.challenge.cinecriticas.entities.db.User;
+import com.mosken.rodrigo.letscode.challenge.cinecriticas.domain.dto.UserDto;
+import com.mosken.rodrigo.letscode.challenge.cinecriticas.adapters.mysql.domain.UserBean;
 
 public interface ISignInService {
-    Role getRole(ERole role);
 
-    boolean userExists(String username );
-    User createUser(User user);
+    boolean userExists(String username);
+    UserBean createUser(UserDto user);
 }

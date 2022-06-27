@@ -6,7 +6,7 @@ import lombok.*;
 @NoArgsConstructor
 @AllArgsConstructor
 @Data
-public class Rating {
+public class MovieRating {
 
     private String source;
     private String value;

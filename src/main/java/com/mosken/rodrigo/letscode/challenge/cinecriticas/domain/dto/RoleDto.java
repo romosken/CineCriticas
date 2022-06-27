@@ -1,6 +1,6 @@
-package com.mosken.rodrigo.letscode.challenge.cinecriticas.adapters.mysql.dto;
+package com.mosken.rodrigo.letscode.challenge.cinecriticas.domain.dto;
 
-import com.mosken.rodrigo.letscode.challenge.cinecriticas.entities.db.ERole;
+import com.mosken.rodrigo.letscode.challenge.cinecriticas.domain.enums.ERole;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -11,5 +11,6 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @AllArgsConstructor
 public class RoleDto {
+
     private ERole name;
 }

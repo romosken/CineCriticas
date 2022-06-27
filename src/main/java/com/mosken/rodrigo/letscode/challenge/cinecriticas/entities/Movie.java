@@ -7,6 +7,7 @@ import java.util.List;
 import java.util.Objects;
 
 @Getter
+@Setter
 @Builder
 public class Movie {
 
@@ -24,7 +25,7 @@ public class Movie {
     private String country;
     private String awards;
     private String poster;
-    private List<Rating> ratings;
+    private List<MovieRating> ratings;
     private String metascore;
     private String imdbRating;
     private String imdbVotes;
@@ -49,7 +50,7 @@ public class Movie {
                  String country,
                  String awards,
                  String poster,
-                 List<Rating> ratings,
+                 List<MovieRating> ratings,
                  String metascore,
                  String imdbRating,
                  String imdbVotes,
@@ -95,113 +96,10 @@ public class Movie {
         this.year = year;
     }
 
-    public void setRated(String rated) {
-//        validateAttribute(rated, "RATED");
-        this.rated = rated;
-    }
 
     public void setReleased(String released) {
         validateAttribute(released, "RELEASED");
         this.released = released;
-    }
-
-    public void setRuntime(String runtime) {
-//        validateAttribute(runtime, "RUNTIME");
-        this.runtime = runtime;
-    }
-
-    public void setGenre(String genre) {
-//        validateAttribute(genre, "GENRE");
-        this.genre = genre;
-    }
-
-    public void setDirector(String director) {
-//        validateAttribute(director, "DIRECTOR");
-        this.director = director;
-    }
-
-    public void setWriter(String writer) {
-//        validateAttribute(writer, "WRITER");
-        this.writer = writer;
-    }
-
-    public void setActors(String actors) {
-//        validateAttribute(actors, "ACTORS");
-        this.actors = actors;
-    }
-
-    public void setPlot(String plot) {
-//        validateAttribute(plot, "PLOT");
-        this.plot = plot;
-    }
-
-    public void setLanguage(String language) {
-//        validateAttribute(language, "LANGUAGE");
-        this.language = language;
-    }
-
-    public void setCountry(String country) {
-//        validateAttribute(country, "CONTRY");
-        this.country = country;
-    }
-
-    public void setAwards(String awards) {
-//        validateAttribute(awards, "AWARDS");
-        this.awards = awards;
-    }
-
-    public void setPoster(String poster) {
-//        validateAttribute(poster, "POSTER");
-        this.poster = poster;
-    }
-
-    public void setRatings(List<Rating> ratings) {
-        this.ratings = ratings;
-    }
-
-    public void setMetascore(String metascore) {
-//        validateAttribute(metascore, "METASCORE");
-        this.metascore = metascore;
-    }
-
-    public void setImdbRating(String imdbRating) {
-//        validateAttribute(imdbRating, "IMDB_RATING");
-        this.imdbRating = imdbRating;
-    }
-
-    public void setImdbVotes(String imdbVotes) {
-//        validateAttribute(imdbVotes, "IMDB_VOTES");
-        this.imdbVotes = imdbVotes;
-    }
-
-    public void setImdbID(String imdbID) {
-        validateAttribute(imdbID, "IMDB_ID");
-        this.imdbID = imdbID;
-    }
-
-    public void setType(String type) {
-        validateAttribute(type, "TYPE");
-        this.type = type;
-    }
-
-    public void setDvd(String dvd) {
-//        validateAttribute(dvd, "DVD");
-        this.dvd = dvd;
-    }
-
-    public void setBoxOffice(String boxOffice) {
-//        validateAttribute(boxOffice, "BOX_OFFICE");
-        this.boxOffice = boxOffice;
-    }
-
-    public void setProduction(String production) {
-//        validateAttribute(production, "PRODUCTION");
-        this.production = production;
-    }
-
-    public void setWebsite(String website) {
-//        validateAttribute(website, "WEBSITE");
-        this.website = website;
     }
 
 

@@ -1,5 +1,6 @@
-package com.mosken.rodrigo.letscode.challenge.cinecriticas.adapters.mysql.dto;
+package com.mosken.rodrigo.letscode.challenge.cinecriticas.domain.dto;
 
+import com.mosken.rodrigo.letscode.challenge.cinecriticas.domain.enums.ERole;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -16,5 +17,5 @@ public class UserDto {
     private String password;
     private String email;
     private int xp;
-    private RoleDto role;
+    private ERole role;
 }

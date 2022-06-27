@@ -1,13 +1,14 @@
 package com.mosken.rodrigo.letscode.challenge.cinecriticas.entities.db;
 
 import com.mosken.rodrigo.letscode.challenge.cinecriticas.entities.exceptions.UserException;
-import lombok.*;
+import lombok.Builder;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
 import java.util.Objects;
 
-@Entity
-@Table(name = "User")
+
 @Builder
 @Getter
 @NoArgsConstructor
@@ -21,9 +22,6 @@ public class User {
     private String email;
 
     private int xp;
-
-    @OneToOne
-    @JoinColumn(name = "role_name", referencedColumnName = "name")
     private Role role;
 
     public User(String username, String password, String email, int xp, Role role) {
