@@ -12,6 +12,8 @@ import com.mosken.rodrigo.letscode.challenge.cinecriticas.usecases.returnomdbmov
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
+import java.util.Objects;
+
 @Service
 @RequiredArgsConstructor
 public class CommentMovieServiceImpl implements ICommentMovieService {
@@ -27,7 +29,7 @@ public class CommentMovieServiceImpl implements ICommentMovieService {
 
 
     @Override
-    public CommentBean createComment(CommentDto comment) {
+    public CommentDto createComment(CommentDto comment) {
 
         validateUserAndMovie(comment.getUsername(), comment.getMovieId());
         var zeroTest = Integer.valueOf(0);
@@ -38,12 +40,23 @@ public class CommentMovieServiceImpl implements ICommentMovieService {
                 .commentReference(zeroTest.equals(comment.getCommentReference()) ? null : getComment(comment.getCommentReference()))
                 .commentReply(zeroTest.equals(comment.getCommentReply()) ? null : getComment(comment.getCommentReply()))
                 .build();
-        return commentRepository.save(commentBean);
+        CommentBean commentSaved = commentRepository.save(commentBean);
+        return buildCommentDto(commentSaved);
+    }
+
+    private CommentDto buildCommentDto(CommentBean commentSaved) {
+        return CommentDto.builder()
+                .username(commentSaved.getUsername())
+                .movieId(commentSaved.getMovieId())
+                .text(commentSaved.getText())
+                .commentReference(Objects.isNull(commentSaved.getCommentReference())? 0: commentSaved.getCommentReference().getId())
+                .commentReply(Objects.isNull(commentSaved.getCommentReply())? 0: commentSaved.getCommentReply().getId())
+                .build();
+
     }
 
     private void validateUserAndMovie(String username, String movieId) {
-
-        if (userRepository.findById(username).isEmpty())
+        if (!userRepository.existsById(username))
             throw new UserNotFoundException(USER_NOT_EXISTS);
         iOmdb.getMovie(OmdbRequest.builder().movieId(movieId).build());
     }

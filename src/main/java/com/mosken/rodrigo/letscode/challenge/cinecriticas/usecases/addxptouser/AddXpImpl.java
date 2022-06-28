@@ -1,6 +1,8 @@
 package com.mosken.rodrigo.letscode.challenge.cinecriticas.usecases.addxptouser;
 
 import com.mosken.rodrigo.letscode.challenge.cinecriticas.usecases.addxptouser.port.IAddXpService;
+import com.mosken.rodrigo.letscode.challenge.cinecriticas.usecases.upgradeuser.IUpgradeUser;
+import com.mosken.rodrigo.letscode.challenge.cinecriticas.usecases.upgradeuser.UpgradeUserRequest;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
@@ -8,11 +10,14 @@ import org.springframework.stereotype.Service;
 @RequiredArgsConstructor
 public class AddXpImpl implements IAddXp {
     private final IAddXpService iAddXpService;
+    private final IUpgradeUser iUpgradeUser;
 
     @Override
     public AddXpResponse addXpToUser(AddXpRequest request) {
-       var response = iAddXpService.addXpToUser(request.getUsername(), request.getXpToAdd());
-       return AddXpResponse.builder().response(response).build();
+        var username = request.getUsername();
+        var response = iAddXpService.addXpToUser(username, request.getXpToAdd());
+        iUpgradeUser.verifyAndUpgradeUser(UpgradeUserRequest.builder().username(username).build());
+        return AddXpResponse.builder().response(response).build();
 
     }
 

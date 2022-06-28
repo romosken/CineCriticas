@@ -13,6 +13,7 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 public class RatingDto {
 
+    private int id;
     @JsonProperty("movie_id")
     private String movieId;
     private String username;

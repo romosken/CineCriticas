@@ -1,49 +1,49 @@
-package com.mosken.rodrigo.letscode.challenge.cinecriticas.usecases.signinuser;
+package com.mosken.rodrigo.letscode.challenge.cinecriticas.usecases.signupuser;
 
 import com.mosken.rodrigo.letscode.challenge.cinecriticas.adapters.mysql.domain.UserBean;
 import com.mosken.rodrigo.letscode.challenge.cinecriticas.domain.dto.UserDto;
 import com.mosken.rodrigo.letscode.challenge.cinecriticas.domain.enums.ERole;
-import com.mosken.rodrigo.letscode.challenge.cinecriticas.usecases.signinuser.exception.DuplicateUserException;
-import com.mosken.rodrigo.letscode.challenge.cinecriticas.usecases.signinuser.port.ISignInService;
+import com.mosken.rodrigo.letscode.challenge.cinecriticas.usecases.signupuser.exception.DuplicateUserException;
+import com.mosken.rodrigo.letscode.challenge.cinecriticas.usecases.signupuser.port.ISignUpService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.stereotype.Service;
 
 @Service
 @RequiredArgsConstructor
-public class SignInImpl implements ISignIn {
+public class SignUpImpl implements ISignUp {
 
-    private final ISignInService iSignInService;
+    private final ISignUpService iSignUpService;
     private static final String USER_ALREADY_EXISTS = "Username already exists!";
     private static final String EMAIL_ALREADY_EXISTS = "Email already exists!";
 
     @Override
-    public SignInResponse signIn(SignInRequest request) {
+    public SignUpResponse signUp(SignUpRequest request) {
         //TODO: adicionar logs
-        if (iSignInService.userExists(request.getUsername()))
+        if (iSignUpService.userExists(request.getUsername()))
             throw new DuplicateUserException(USER_ALREADY_EXISTS);
         var validatedUser = buildUser(request);
         //TODO: adicionar segurança nas senhas
         try {
-            var response = iSignInService.createUser(validatedUser);
-            return buildSignInResponse(response);
+            var response = iSignUpService.createUser(validatedUser);
+            return buildSignUpResponse(response);
         } catch (DataIntegrityViolationException e) {
             throw new DuplicateUserException(EMAIL_ALREADY_EXISTS);
         }
 
     }
 
-    private SignInResponse buildSignInResponse(UserBean response) {
-        return SignInResponse.builder()
+    private SignUpResponse buildSignUpResponse(UserDto response) {
+        return SignUpResponse.builder()
                 .username(response.getUsername())
                 .email(response.getEmail())
                 .password(response.getPassword())
                 .xp(response.getXp())
-                .role(response.getRole().getName())
+                .role(response.getRole())
                 .build();
     }
 
-    private UserDto buildUser(SignInRequest request) {
+    private UserDto buildUser(SignUpRequest request) {
         return UserDto.builder()
                 .username(request.getUsername())
                 .email(request.getEmail())

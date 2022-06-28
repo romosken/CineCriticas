@@ -13,6 +13,7 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 public class CommentDto {
 
+    private int id;
     @JsonProperty("movie_id")
     private String movieId;
     private String username;

@@ -1,4 +1,4 @@
-package com.mosken.rodrigo.letscode.challenge.cinecriticas.usecases.signinuser.exception;
+package com.mosken.rodrigo.letscode.challenge.cinecriticas.usecases.signupuser.exception;
 
 import com.mosken.rodrigo.letscode.challenge.cinecriticas.adapters.exceptions.DuplicateEntryException;
 

@@ -3,6 +3,8 @@ package com.mosken.rodrigo.letscode.challenge.cinecriticas.usecases.commentmovie
 import com.mosken.rodrigo.letscode.challenge.cinecriticas.adapters.mysql.domain.CommentBean;
 import com.mosken.rodrigo.letscode.challenge.cinecriticas.domain.dto.CommentDto;
 import com.mosken.rodrigo.letscode.challenge.cinecriticas.entities.db.Comment;
+import com.mosken.rodrigo.letscode.challenge.cinecriticas.usecases.addxptouser.AddXpRequest;
+import com.mosken.rodrigo.letscode.challenge.cinecriticas.usecases.addxptouser.IAddXp;
 import com.mosken.rodrigo.letscode.challenge.cinecriticas.usecases.commentmovie.port.ICommentMovieService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
@@ -14,7 +16,7 @@ import java.util.Objects;
 public class CommentMovieImpl implements ICommentMovie {
 
     private final ICommentMovieService iCommentMovieService;
-//    private final IAddXp iAddXp;
+    private final IAddXp iAddXp;
 
 
     @Override
@@ -22,7 +24,7 @@ public class CommentMovieImpl implements ICommentMovie {
         var responseCommentMovie = iCommentMovieService.createComment(buildCommentDto(request));
         var entity = validateResponse(responseCommentMovie);
 
-//        iAddXp.addXpToUser(AddXpRequest.builder().username(request.getUsername()).xpToAdd(1).build());
+        iAddXp.addXpToUser(AddXpRequest.builder().username(request.getUsername()).xpToAdd(1).build());
         return buildCommentMovieResponse(entity);
     }
 
@@ -36,14 +38,14 @@ public class CommentMovieImpl implements ICommentMovie {
                 .build();
     }
 
-    private Comment validateResponse(CommentBean response) {
+    private Comment validateResponse(CommentDto response) {
         return Comment.builder()
                 .id(response.getId())
                 .username(response.getUsername())
                 .movieId(response.getMovieId())
                 .text(response.getText())
-                .commentReference(Objects.isNull(response.getCommentReference()) ? 0 : response.getCommentReference().getId())
-                .commentReply(Objects.isNull(response.getCommentReply()) ? 0 : response.getCommentReply().getId())
+                .commentReference(response.getCommentReference())
+                .commentReply(response.getCommentReply())
                 .build();
     }
 

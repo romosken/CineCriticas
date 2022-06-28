@@ -4,14 +4,14 @@ import com.mosken.rodrigo.letscode.challenge.cinecriticas.adapters.mysql.domain.
 import com.mosken.rodrigo.letscode.challenge.cinecriticas.adapters.mysql.domain.UserBean;
 import com.mosken.rodrigo.letscode.challenge.cinecriticas.adapters.mysql.repositories.UserRepository;
 import com.mosken.rodrigo.letscode.challenge.cinecriticas.domain.dto.UserDto;
-import com.mosken.rodrigo.letscode.challenge.cinecriticas.usecases.signinuser.port.ISignInService;
+import com.mosken.rodrigo.letscode.challenge.cinecriticas.usecases.signupuser.port.ISignUpService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.stereotype.Service;
 
 @Service
 @RequiredArgsConstructor
-public class SignInServiceImpl implements ISignInService {
+public class SignUpServiceImpl implements ISignUpService {
 
     private final UserRepository userRepository;
 
@@ -22,7 +22,7 @@ public class SignInServiceImpl implements ISignInService {
     }
 
     @Override
-    public UserBean createUser(UserDto user) throws DataIntegrityViolationException {
+    public UserDto createUser(UserDto user) throws DataIntegrityViolationException {
             var bean = UserBean.builder()
                     .username(user.getUsername())
                     .email(user.getEmail())
@@ -30,7 +30,18 @@ public class SignInServiceImpl implements ISignInService {
                     .xp(user.getXp())
                     .role(RoleBean.builder().name(user.getRole()).build())
                     .build();
-            return userRepository.save(bean);
+        UserBean userSaved = userRepository.save(bean);
+        return buildUserDto(userSaved);
 
+    }
+
+    private UserDto buildUserDto(UserBean userSaved) {
+     return UserDto.builder()
+                .username(userSaved.getUsername())
+                .email(userSaved.getEmail())
+                .password(userSaved.getPassword())
+                .xp(userSaved.getXp())
+                .role(userSaved.getRole().getName())
+                .build();
     }
 }

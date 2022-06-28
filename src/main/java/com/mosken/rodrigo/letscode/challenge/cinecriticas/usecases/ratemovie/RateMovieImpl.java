@@ -48,7 +48,7 @@ public class RateMovieImpl implements IRateMovie {
                 .build();
     }
 
-    private Rating validateResponse(RatingBean response) {
+    private Rating validateResponse(RatingDto response) {
         return Rating.builder()
                 .id(response.getId())
                 .username(response.getUsername())

@@ -21,7 +21,7 @@ public class RateMovieServiceImpl implements IRateMovieService {
     private static final String USER_NOT_EXISTS = "The user does not exist!";
 
     private void validateUserAndMovie(String username, String movieId){
-        if (userRepository.findById(username).isEmpty())
+        if (!userRepository.existsById(username))
             throw new UserNotFoundException(USER_NOT_EXISTS);
         iOmdb.getMovie(OmdbRequest.builder().movieId(movieId).build());
     }
@@ -32,12 +32,22 @@ public class RateMovieServiceImpl implements IRateMovieService {
     }
 
     @Override
-    public RatingBean createRate(RatingDto rate) {
+    public RatingDto createRate(RatingDto rate) {
         var rateBean = RatingBean.builder()
                 .username(rate.getUsername())
                 .movieId(rate.getMovieId())
                 .rating(rate.getRating())
                 .build();
-        return ratingRepository.save(rateBean);
+        RatingBean rateSaved = ratingRepository.save(rateBean);
+        return buildRatingDto(rateSaved);
+    }
+
+    private RatingDto buildRatingDto(RatingBean rateSaved) {
+        return RatingDto.builder()
+                .id(rateSaved.getId())
+                .username(rateSaved.getUsername())
+                .movieId(rateSaved.getMovieId())
+                .rating(rateSaved.getRating())
+                .build();
     }
 }

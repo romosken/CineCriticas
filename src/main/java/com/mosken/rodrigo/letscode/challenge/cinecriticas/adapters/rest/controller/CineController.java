@@ -12,18 +12,18 @@ import com.mosken.rodrigo.letscode.challenge.cinecriticas.usecases.commentmovie.
 import com.mosken.rodrigo.letscode.challenge.cinecriticas.usecases.deletecomment.DeleteCommentRequest;
 import com.mosken.rodrigo.letscode.challenge.cinecriticas.usecases.deletecomment.DeleteCommentResponse;
 import com.mosken.rodrigo.letscode.challenge.cinecriticas.usecases.deletecomment.IDeleteComment;
-import com.mosken.rodrigo.letscode.challenge.cinecriticas.usecases.likedislikecomment.ILikeDislikeComment;
-import com.mosken.rodrigo.letscode.challenge.cinecriticas.usecases.likedislikecomment.LikeDislikeCommentRequest;
-import com.mosken.rodrigo.letscode.challenge.cinecriticas.usecases.likedislikecomment.LikeDislikeCommentResponse;
+import com.mosken.rodrigo.letscode.challenge.cinecriticas.usecases.likedislikemarkrepeatedcomment.ILikeDislikeMarkRepeatedComment;
+import com.mosken.rodrigo.letscode.challenge.cinecriticas.usecases.likedislikemarkrepeatedcomment.LikeDislikeMarkRepeatedCommentRequest;
+import com.mosken.rodrigo.letscode.challenge.cinecriticas.usecases.likedislikemarkrepeatedcomment.LikeDislikeMarkRepeatedCommentResponse;
 import com.mosken.rodrigo.letscode.challenge.cinecriticas.usecases.ratemovie.IRateMovie;
 import com.mosken.rodrigo.letscode.challenge.cinecriticas.usecases.ratemovie.RateMovieRequest;
 import com.mosken.rodrigo.letscode.challenge.cinecriticas.usecases.ratemovie.RateMovieResponse;
 import com.mosken.rodrigo.letscode.challenge.cinecriticas.usecases.returnomdbmovie.IOmdb;
 import com.mosken.rodrigo.letscode.challenge.cinecriticas.usecases.returnomdbmovie.OmdbRequest;
 import com.mosken.rodrigo.letscode.challenge.cinecriticas.usecases.returnomdbmovie.OmdbResponse;
-import com.mosken.rodrigo.letscode.challenge.cinecriticas.usecases.signinuser.ISignIn;
-import com.mosken.rodrigo.letscode.challenge.cinecriticas.usecases.signinuser.SignInRequest;
-import com.mosken.rodrigo.letscode.challenge.cinecriticas.usecases.signinuser.SignInResponse;
+import com.mosken.rodrigo.letscode.challenge.cinecriticas.usecases.signupuser.ISignUp;
+import com.mosken.rodrigo.letscode.challenge.cinecriticas.usecases.signupuser.SignUpRequest;
+import com.mosken.rodrigo.letscode.challenge.cinecriticas.usecases.signupuser.SignUpResponse;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -37,11 +37,11 @@ public class CineController {
 
     //TODO adicionar logs
     private final IOmdb iOmdb;
-    private final ISignIn iSignIn;
+    private final ISignUp iSignUp;
     private final IRateMovie iRateMovie;
     private final ICommentMovie iCommentMovie;
     private final IDeleteComment iDeleteComment;
-    private final ILikeDislikeComment iLikeDislikeComment;
+    private final ILikeDislikeMarkRepeatedComment iLikeDislikeMarkRepeatedComment;
     private static final String ID_AND_TITLE_NULL = "At least one argument is required! (id or title)";
 
 
@@ -61,11 +61,11 @@ public class CineController {
 
     }
 
-    @PostMapping("/user/signin")
-    public ResponseEntity<SignInResponse> insertUser(
+    @PostMapping("/user/signup")
+    public ResponseEntity<SignUpResponse> insertUser(
             @RequestBody UserDto user
     ) {
-        var response = iSignIn.signIn(SignInRequest.builder()
+        var response = iSignUp.signUp(SignUpRequest.builder()
                 .username(user.getUsername())
                 .password(user.getPassword())
                 .email(user.getEmail())
@@ -111,11 +111,11 @@ public class CineController {
     }
 
     @PatchMapping("/comment/like/{id}")
-    public ResponseEntity<LikeDislikeCommentResponse> likeComment(
+    public ResponseEntity<LikeDislikeMarkRepeatedCommentResponse> likeComment(
             @PathVariable int id,
             @RequestParam(name = "add", defaultValue = "true", required = false) boolean add
     ) {
-        var response = iLikeDislikeComment.likeComment(LikeDislikeCommentRequest.builder()
+        var response = iLikeDislikeMarkRepeatedComment.likeComment(LikeDislikeMarkRepeatedCommentRequest.builder()
                 .commentId(id)
                 .add(add)
                 .build());
@@ -123,11 +123,23 @@ public class CineController {
     }
 
     @PatchMapping("/comment/dislike/{id}")
-    public ResponseEntity<LikeDislikeCommentResponse> dislikeComment(
+    public ResponseEntity<LikeDislikeMarkRepeatedCommentResponse> dislikeComment(
             @PathVariable int id,
             @RequestParam(name = "add", defaultValue = "true", required = false) boolean add
     ) {
-        var response = iLikeDislikeComment.dislikeComment(LikeDislikeCommentRequest.builder()
+        var response = iLikeDislikeMarkRepeatedComment.dislikeComment(LikeDislikeMarkRepeatedCommentRequest.builder()
+                .commentId(id)
+                .add(add)
+                .build());
+        return ResponseEntity.status(201).body(response);
+    }
+
+    @PatchMapping("/comment/markasrepeated/{id}")
+    public ResponseEntity<LikeDislikeMarkRepeatedCommentResponse> markCommentRepeated(
+            @PathVariable int id,
+            @RequestParam(name = "add", defaultValue = "true", required = false) boolean add
+    ) {
+        var response = iLikeDislikeMarkRepeatedComment.markCommentRepeated(LikeDislikeMarkRepeatedCommentRequest.builder()
                 .commentId(id)
                 .add(add)
                 .build());
