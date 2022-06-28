@@ -18,9 +18,11 @@ public class ApiErrorResponse {
     private String message;
     private String stackTrace;
 
-    public ApiErrorResponse(){timestamp = new Date();}
+    public ApiErrorResponse() {
+        timestamp = new Date();
+    }
 
-    public ApiErrorResponse(HttpStatus httpStatus, String message){
+    public ApiErrorResponse(HttpStatus httpStatus, String message) {
         this();
         this.code = httpStatus.value();
         this.status = httpStatus.name();

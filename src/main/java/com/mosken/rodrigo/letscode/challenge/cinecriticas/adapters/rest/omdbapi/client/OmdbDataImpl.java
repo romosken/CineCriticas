@@ -25,14 +25,15 @@ public class OmdbDataImpl implements IOmdbData {
     private static final String NULL_CONTENT = "Movie not found!";
 
     @Override
-    public OmdbDataResponse getOmdbData(String movieName, String movieId, String movieYear){
+    public OmdbDataResponse getOmdbData(String movieName, String movieId, String movieYear) {
         var response = iOmdbApi.getMovie(apiKey, movieName, movieId, movieYear);
         return buildResponse(response);
 
     }
 
     private OmdbDataResponse buildResponse(OmdbMovie response) {
-        var validatedResponse = Optional.ofNullable(response).orElseThrow(() -> new OmdbApiException(NULL_CONTENT));
+        var validatedResponse = Optional.ofNullable(response)
+                .orElseThrow(() -> new OmdbApiException(NULL_CONTENT));
         if (!Boolean.parseBoolean(validatedResponse.getResponse()))
             throw new OmdbApiException(NULL_CONTENT);
 
@@ -68,7 +69,7 @@ public class OmdbDataImpl implements IOmdbData {
 
 
     private List<OmdbDataResponse.MovieRatings> buildRatingList(List<OmdbRatings> response) {
-        if(Objects.isNull(response))
+        if (Objects.isNull(response))
             return Collections.emptyList();
         return response.stream().map(rating -> OmdbDataResponse.MovieRatings
                 .builder()
@@ -78,7 +79,6 @@ public class OmdbDataImpl implements IOmdbData {
 
         ).collect(Collectors.toList());
     }
-
 
 
 }

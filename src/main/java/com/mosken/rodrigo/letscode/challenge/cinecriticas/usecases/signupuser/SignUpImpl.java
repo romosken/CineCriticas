@@ -1,6 +1,5 @@
 package com.mosken.rodrigo.letscode.challenge.cinecriticas.usecases.signupuser;
 
-import com.mosken.rodrigo.letscode.challenge.cinecriticas.adapters.mysql.domain.UserBean;
 import com.mosken.rodrigo.letscode.challenge.cinecriticas.domain.dto.UserDto;
 import com.mosken.rodrigo.letscode.challenge.cinecriticas.domain.enums.ERole;
 import com.mosken.rodrigo.letscode.challenge.cinecriticas.usecases.signupuser.exception.DuplicateUserException;
@@ -19,11 +18,9 @@ public class SignUpImpl implements ISignUp {
 
     @Override
     public SignUpResponse signUp(SignUpRequest request) {
-        //TODO: adicionar logs
         if (iSignUpService.userExists(request.getUsername()))
             throw new DuplicateUserException(USER_ALREADY_EXISTS);
         var validatedUser = buildUser(request);
-        //TODO: adicionar segurança nas senhas
         try {
             var response = iSignUpService.createUser(validatedUser);
             return buildSignUpResponse(response);

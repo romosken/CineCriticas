@@ -16,11 +16,8 @@ public class User {
 
     @Id
     private String username;
-
     private String password;
-
     private String email;
-
     private int xp;
     private Role role;
 

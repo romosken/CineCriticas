@@ -1,6 +1,5 @@
 package com.mosken.rodrigo.letscode.challenge.cinecriticas.usecases.ratemovie;
 
-import com.mosken.rodrigo.letscode.challenge.cinecriticas.adapters.mysql.domain.RatingBean;
 import com.mosken.rodrigo.letscode.challenge.cinecriticas.domain.dto.RatingDto;
 import com.mosken.rodrigo.letscode.challenge.cinecriticas.entities.db.Rating;
 import com.mosken.rodrigo.letscode.challenge.cinecriticas.usecases.addxptouser.AddXpRequest;
@@ -36,7 +35,7 @@ public class RateMovieImpl implements IRateMovie {
         if (iRateMovieService.ratingExists(request.getUsername(), request.getMovieId()))
             throw new DuplicateRatingException(RATING_ALREADY_EXISTS);
         var rating = request.getRating();
-        if (rating>100 || rating<0)
+        if (rating > 100 || rating < 0)
             throw new InvalidRatingRangeException(RATING_OUT_OF_RANGE);
     }
 

@@ -24,6 +24,14 @@ public class UpgradeUserImpl implements IUpgradeUser {
         return buildUpgradeUserResponse(UPGRADE_USER_SUCCESS);
     }
 
+    @Override
+    public UpgradeUserResponse turnUserModerator(UpgradeUserRequest request) {
+        var user = iUpgradeUserService.getUser(request.getUsername());
+        user.setRole(ERole.MODERADOR);
+        iUpgradeUserService.saveUser(user);
+        return buildUpgradeUserResponse(UPGRADE_USER_SUCCESS);
+    }
+
     private UpgradeUserResponse buildUpgradeUserResponse(String msg) {
         return UpgradeUserResponse.builder().response(msg).build();
     }

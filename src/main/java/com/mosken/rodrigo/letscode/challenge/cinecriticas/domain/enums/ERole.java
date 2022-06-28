@@ -7,12 +7,13 @@ public enum ERole {
     MODERADOR("MODERADOR");
 
     private final String value;
+
     ERole(String value) {
         this.value = value;
     }
 
     @Override
-    public String toString(){
+    public String toString() {
         return value;
     }
 

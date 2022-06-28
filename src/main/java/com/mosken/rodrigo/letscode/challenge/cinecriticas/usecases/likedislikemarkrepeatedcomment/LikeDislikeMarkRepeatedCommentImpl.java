@@ -1,6 +1,5 @@
 package com.mosken.rodrigo.letscode.challenge.cinecriticas.usecases.likedislikemarkrepeatedcomment;
 
-import com.mosken.rodrigo.letscode.challenge.cinecriticas.usecases.likedislikemarkrepeatedcomment.exception.CommentNotFoundException;
 import com.mosken.rodrigo.letscode.challenge.cinecriticas.usecases.likedislikemarkrepeatedcomment.port.ILikeDislikeMarkRepeatedCommentService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
@@ -37,7 +36,6 @@ public class LikeDislikeMarkRepeatedCommentImpl implements ILikeDislikeMarkRepea
         iLikeDislikeMarkRepeatedCommentService.markCommentRepeated(commentId, request.isAdd());
         return LikeDislikeMarkRepeatedCommentResponse.builder().response(REPEATED_SUCCESS).build();
     }
-
 
 
 }

@@ -21,16 +21,24 @@ public class Comment {
     private int commentReply;
     private boolean repeated;
 
-    public Comment(int id, String movieId, String username, String text, int likes, int dislikes, int commentReference, int commentReply, boolean repeated) {
-       setId(id);
-       setMovieId(movieId);
-       setUsername(username);
-       setText(text);
-       setLikes(likes);
-       setDislikes(dislikes);
-       setCommentReference(commentReference);
-       setCommentReply(commentReply);
-       setRepeated(repeated);
+    public Comment(int id,
+                   String movieId,
+                   String username,
+                   String text,
+                   int likes,
+                   int dislikes,
+                   int commentReference,
+                   int commentReply,
+                   boolean repeated) {
+        setId(id);
+        setMovieId(movieId);
+        setUsername(username);
+        setText(text);
+        setLikes(likes);
+        setDislikes(dislikes);
+        setCommentReference(commentReference);
+        setCommentReply(commentReply);
+        setRepeated(repeated);
     }
 
     public void setId(int id) {
@@ -67,6 +75,7 @@ public class Comment {
         validateAttributeObject(repeated, "REPEATED");
         this.repeated = repeated;
     }
+
     private void validateAttribute(String attribute, String attributeName) {
         if (Objects.isNull(attribute) || attribute.isBlank())
             throw new UserException(attributeName + " cannot be null or empty!");

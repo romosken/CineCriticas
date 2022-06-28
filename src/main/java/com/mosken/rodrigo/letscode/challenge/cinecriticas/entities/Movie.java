@@ -103,14 +103,13 @@ public class Movie {
     }
 
 
-
     private void validateAttribute(String attribute, String attributeName) {
         if (Objects.isNull(attribute) || attribute.isBlank())
             throw new MovieException(attributeName + " cannot be null or empty!");
 
     }
 
-    public static class MovieBuilder{
+    public static class MovieBuilder {
         public Movie build() {
             return new Movie(
                     title,

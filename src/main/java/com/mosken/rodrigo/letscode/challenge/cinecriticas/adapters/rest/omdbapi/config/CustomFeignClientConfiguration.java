@@ -16,11 +16,17 @@ public class CustomFeignClientConfiguration {
 
     @Bean
     public Retryer retryer() {
-        return new Retryer.Default(1000,1000,3);
+
+        return new Retryer.Default(1000, 1000, 3);
     }
+
     @Bean
-    public Request.Options options(){
-        return new Request.Options(5L, TimeUnit.SECONDS, 60L, TimeUnit.SECONDS, true);
+    public Request.Options options() {
+        return new Request.Options(5L,
+                TimeUnit.SECONDS,
+                60L,
+                TimeUnit.SECONDS,
+                true);
     }
 
 //    @Bean
@@ -29,16 +35,20 @@ public class CustomFeignClientConfiguration {
 //    }
 
     @Bean
-    public WebMvcConfigurer corsConfiguration(){
+    public WebMvcConfigurer corsConfiguration() {
         return new WebMvcConfigurer() {
             @Override
             public void addCorsMappings(CorsRegistry registry) {
-                registry.addMapping("/**").allowedOrigins("*").allowedMethods("GET","POST","PUT","DELETE","OPTIONS","HEAD","TRACE","CONNECT");
+                registry.addMapping("/**")
+                        .allowedOrigins("*")
+                        .allowedMethods("GET", "POST", "PUT", "DELETE", "OPTIONS", "HEAD", "TRACE", "CONNECT");
             }
         };
     }
+
     @Bean
     public OkHttpClient client() {
+
         return new OkHttpClient();
     }
 }

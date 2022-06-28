@@ -16,15 +16,16 @@ import java.util.stream.Collectors;
 
 @Service
 @RequiredArgsConstructor
-public class OmdbImpl implements IOmdb{
+public class OmdbImpl implements IOmdb {
 
     private final IOmdbData iOmdbData;
 
-
     @Override
     public OmdbResponse getMovie(OmdbRequest request) {
-        //TODO: Adicionar logs
-        var response = iOmdbData.getOmdbData(request.getMovieTitle(), request.getMovieId(), request.getMovieYear());
+        var response = iOmdbData.getOmdbData(
+                request.getMovieTitle(),
+                request.getMovieId(),
+                request.getMovieYear());
         var responseEntity = buildMovie(response);
         return buildOmdbResponse(responseEntity);
     }
@@ -58,8 +59,9 @@ public class OmdbImpl implements IOmdb{
                 .build();
 
     }
+
     private List<MovieRating> buildRatingEntityList(List<OmdbDataResponse.MovieRatings> response) {
-        if(Objects.isNull(response))
+        if (Objects.isNull(response))
             return Collections.emptyList();
         return response.stream().map(rating -> MovieRating
                 .builder()
@@ -98,6 +100,7 @@ public class OmdbImpl implements IOmdb{
                 .build();
 
     }
+
     private List<OmdbResponse.RatingResponse> buildRatingResponseList(List<MovieRating> response) {
         return response.stream().map(rating -> OmdbResponse.RatingResponse
                 .builder()
@@ -107,7 +110,6 @@ public class OmdbImpl implements IOmdb{
 
         ).collect(Collectors.toList());
     }
-
 
 
 }

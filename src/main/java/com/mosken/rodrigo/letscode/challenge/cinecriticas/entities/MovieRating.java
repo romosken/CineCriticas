@@ -10,6 +10,4 @@ public class MovieRating {
 
     private String source;
     private String value;
-
-
 }

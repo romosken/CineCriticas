@@ -88,9 +88,4 @@ public class OmdbMovie {
 
     @JsonProperty("Response")
     private String response;
-
-
-
-
-
 }

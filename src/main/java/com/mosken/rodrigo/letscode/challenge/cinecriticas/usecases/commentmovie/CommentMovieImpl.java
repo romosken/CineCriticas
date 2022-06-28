@@ -1,6 +1,5 @@
 package com.mosken.rodrigo.letscode.challenge.cinecriticas.usecases.commentmovie;
 
-import com.mosken.rodrigo.letscode.challenge.cinecriticas.adapters.mysql.domain.CommentBean;
 import com.mosken.rodrigo.letscode.challenge.cinecriticas.domain.dto.CommentDto;
 import com.mosken.rodrigo.letscode.challenge.cinecriticas.entities.db.Comment;
 import com.mosken.rodrigo.letscode.challenge.cinecriticas.usecases.addxptouser.AddXpRequest;
@@ -8,8 +7,6 @@ import com.mosken.rodrigo.letscode.challenge.cinecriticas.usecases.addxptouser.I
 import com.mosken.rodrigo.letscode.challenge.cinecriticas.usecases.commentmovie.port.ICommentMovieService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
-
-import java.util.Objects;
 
 @Service
 @RequiredArgsConstructor

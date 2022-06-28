@@ -25,20 +25,21 @@ public class CustomRestControllerErrorHandler {
 
 
     @ExceptionHandler(value = {DuplicateEntryException.class})
-    protected ResponseEntity<ApiErrorResponse> handleDuplicateEntryException(Exception e){
+    protected ResponseEntity<ApiErrorResponse> handleDuplicateEntryException(Exception e) {
         var status = HttpStatus.CONFLICT;
         var msg = retrieveMessage(e);
         return buildResponseEntity(status, msg);
     }
+
     @ExceptionHandler(value = {InvalidResourceException.class, DatabaseException.class, EntityException.class})
-    protected ResponseEntity<ApiErrorResponse> handleBadRequestException(Exception e){
+    protected ResponseEntity<ApiErrorResponse> handleBadRequestException(Exception e) {
         var status = HttpStatus.BAD_REQUEST;
         var msg = retrieveMessage(e);
         return buildResponseEntity(status, msg);
     }
 
     @ExceptionHandler(value = {AdapterException.class, NoSuchElementException.class})
-    protected ResponseEntity<ApiErrorResponse> handleNotFoundException(Exception e){
+    protected ResponseEntity<ApiErrorResponse> handleNotFoundException(Exception e) {
         var status = HttpStatus.NOT_FOUND;
         var msg = retrieveMessage(e);
         return buildResponseEntity(status, msg);
