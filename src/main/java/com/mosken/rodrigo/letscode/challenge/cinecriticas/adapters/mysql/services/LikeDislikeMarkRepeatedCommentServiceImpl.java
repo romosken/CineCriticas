@@ -2,12 +2,10 @@ package com.mosken.rodrigo.letscode.challenge.cinecriticas.adapters.mysql.servic
 
 import com.mosken.rodrigo.letscode.challenge.cinecriticas.adapters.mysql.domain.CommentBean;
 import com.mosken.rodrigo.letscode.challenge.cinecriticas.adapters.mysql.repositories.CommentRepository;
-import com.mosken.rodrigo.letscode.challenge.cinecriticas.usecases.deletecomment.exception.CommentNotFoundException;
+import com.mosken.rodrigo.letscode.challenge.cinecriticas.usecases.likedislikemarkrepeatedcomment.exception.CommentNotFoundException;
 import com.mosken.rodrigo.letscode.challenge.cinecriticas.usecases.likedislikemarkrepeatedcomment.port.ILikeDislikeMarkRepeatedCommentService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
-
-import java.util.Optional;
 
 @Service
 @RequiredArgsConstructor
@@ -15,7 +13,6 @@ public class LikeDislikeMarkRepeatedCommentServiceImpl implements ILikeDislikeMa
 
     private final CommentRepository commentRepository;
     private static final String COMMENT_NOT_EXISTS = "The comment referenced does not exist!";
-
 
     @Override
     public boolean commentExists(int commentId) {

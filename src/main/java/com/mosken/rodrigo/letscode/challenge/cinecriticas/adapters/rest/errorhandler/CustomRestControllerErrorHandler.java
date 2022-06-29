@@ -1,7 +1,6 @@
 package com.mosken.rodrigo.letscode.challenge.cinecriticas.adapters.rest.errorhandler;
 
 import com.mosken.rodrigo.letscode.challenge.cinecriticas.adapters.exceptions.AdapterException;
-import com.mosken.rodrigo.letscode.challenge.cinecriticas.adapters.exceptions.DatabaseException;
 import com.mosken.rodrigo.letscode.challenge.cinecriticas.adapters.exceptions.DuplicateEntryException;
 import com.mosken.rodrigo.letscode.challenge.cinecriticas.adapters.exceptions.InvalidResourceException;
 import com.mosken.rodrigo.letscode.challenge.cinecriticas.adapters.rest.errorhandler.json.ApiErrorResponse;
@@ -21,9 +20,6 @@ import java.util.Objects;
 @RequiredArgsConstructor
 public class CustomRestControllerErrorHandler {
 
-    //TODO adicionar logs
-
-
     @ExceptionHandler(value = {DuplicateEntryException.class})
     protected ResponseEntity<ApiErrorResponse> handleDuplicateEntryException(Exception e) {
         var status = HttpStatus.CONFLICT;
@@ -31,7 +27,7 @@ public class CustomRestControllerErrorHandler {
         return buildResponseEntity(status, msg);
     }
 
-    @ExceptionHandler(value = {InvalidResourceException.class, DatabaseException.class, EntityException.class})
+    @ExceptionHandler(value = {InvalidResourceException.class, EntityException.class})
     protected ResponseEntity<ApiErrorResponse> handleBadRequestException(Exception e) {
         var status = HttpStatus.BAD_REQUEST;
         var msg = retrieveMessage(e);
@@ -44,7 +40,6 @@ public class CustomRestControllerErrorHandler {
         var msg = retrieveMessage(e);
         return buildResponseEntity(status, msg);
     }
-
 
     private String retrieveMessage(Exception e) {
         return Objects.isNull(e.getCause()) ? e.getLocalizedMessage() : e.getCause().getMessage();

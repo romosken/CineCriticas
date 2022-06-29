@@ -5,7 +5,6 @@ import com.mosken.rodrigo.letscode.challenge.cinecriticas.adapters.exceptions.In
 import com.mosken.rodrigo.letscode.challenge.cinecriticas.domain.dto.CommentDto;
 import com.mosken.rodrigo.letscode.challenge.cinecriticas.domain.dto.RatingDto;
 import com.mosken.rodrigo.letscode.challenge.cinecriticas.domain.dto.UserDto;
-import com.mosken.rodrigo.letscode.challenge.cinecriticas.usecases.addxptouser.IAddXp;
 import com.mosken.rodrigo.letscode.challenge.cinecriticas.usecases.commentmovie.CommentMovieRequest;
 import com.mosken.rodrigo.letscode.challenge.cinecriticas.usecases.commentmovie.CommentMovieResponse;
 import com.mosken.rodrigo.letscode.challenge.cinecriticas.usecases.commentmovie.ICommentMovie;
@@ -18,9 +17,9 @@ import com.mosken.rodrigo.letscode.challenge.cinecriticas.usecases.likedislikema
 import com.mosken.rodrigo.letscode.challenge.cinecriticas.usecases.ratemovie.IRateMovie;
 import com.mosken.rodrigo.letscode.challenge.cinecriticas.usecases.ratemovie.RateMovieRequest;
 import com.mosken.rodrigo.letscode.challenge.cinecriticas.usecases.ratemovie.RateMovieResponse;
-import com.mosken.rodrigo.letscode.challenge.cinecriticas.usecases.returnomdbmovie.IOmdb;
-import com.mosken.rodrigo.letscode.challenge.cinecriticas.usecases.returnomdbmovie.OmdbRequest;
-import com.mosken.rodrigo.letscode.challenge.cinecriticas.usecases.returnomdbmovie.OmdbResponse;
+import com.mosken.rodrigo.letscode.challenge.cinecriticas.usecases.returnmoviecommentsrating.IReturnMovieCommentsRatings;
+import com.mosken.rodrigo.letscode.challenge.cinecriticas.usecases.returnmoviecommentsrating.ReturnMovieCommentsRatingsRequest;
+import com.mosken.rodrigo.letscode.challenge.cinecriticas.usecases.returnmoviecommentsrating.ReturnMovieCommentsRatingsResponse;
 import com.mosken.rodrigo.letscode.challenge.cinecriticas.usecases.signupuser.ISignUp;
 import com.mosken.rodrigo.letscode.challenge.cinecriticas.usecases.signupuser.SignUpRequest;
 import com.mosken.rodrigo.letscode.challenge.cinecriticas.usecases.signupuser.SignUpResponse;
@@ -38,7 +37,7 @@ import java.util.Objects;
 @RequiredArgsConstructor
 public class CineController {
 
-    private final IOmdb iOmdb;
+    private final IReturnMovieCommentsRatings iReturnMovieCommentsRatings;
     private final ISignUp iSignUp;
     private final IRateMovie iRateMovie;
     private final ICommentMovie iCommentMovie;
@@ -48,22 +47,20 @@ public class CineController {
     private static final String ID_AND_TITLE_NULL = "At least one argument is required! (id or title)";
 
 
-    private final IAddXp iAddXp;
-
     @GetMapping("/search/movie")
-    public ResponseEntity<OmdbResponse> getMovie(
+    public ResponseEntity<ReturnMovieCommentsRatingsResponse> getMovie(
             @RequestParam(name = "title", required = false) String title,
             @RequestParam(name = "id", required = false) String id,
             @RequestParam(name = "year", required = false) String year
     ) {
-        //TODO: puxar ratings e comentarios junto dos dados do filme
         if ((Objects.isNull(title) || title.isBlank()) && (Objects.isNull(id) || id.isBlank()))
             throw new InvalidResourceException(ID_AND_TITLE_NULL);
-        var response = iOmdb.getMovie(OmdbRequest.builder()
-                .movieTitle(title)
-                .movieId(id)
-                .movieYear(year)
-                .build());
+        var response = iReturnMovieCommentsRatings.getMoviesCommentsRatings(
+                ReturnMovieCommentsRatingsRequest.builder()
+                        .movieTitle(title)
+                        .movieId(id)
+                        .movieYear(year)
+                        .build());
         return ResponseEntity.ok(response);
 
     }

@@ -5,10 +5,8 @@ import com.mosken.rodrigo.letscode.challenge.cinecriticas.adapters.mysql.domain.
 import com.mosken.rodrigo.letscode.challenge.cinecriticas.adapters.mysql.domain.UserBean;
 import com.mosken.rodrigo.letscode.challenge.cinecriticas.adapters.mysql.repositories.UserRepository;
 import com.mosken.rodrigo.letscode.challenge.cinecriticas.domain.dto.UserDto;
-import com.mosken.rodrigo.letscode.challenge.cinecriticas.usecases.signupuser.port.ISignUpService;
 import com.mosken.rodrigo.letscode.challenge.cinecriticas.usecases.upgradeuser.port.IUpgradeUserService;
 import lombok.RequiredArgsConstructor;
-import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.stereotype.Service;
 
 @Service
@@ -17,7 +15,6 @@ public class UpgradeUserServiceImpl implements IUpgradeUserService {
 
     private final UserRepository userRepository;
     private static final String USER_NOT_EXISTS = "The user does not exist!";
-
 
 
     @Override

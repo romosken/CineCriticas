@@ -25,9 +25,6 @@ public class CommentMovieServiceImpl implements ICommentMovieService {
 
     private static final String COMMENT_NOT_EXISTS = "The comment referenced does not exist!";
 
-
-
-
     @Override
     public CommentDto createComment(CommentDto comment) {
 
@@ -46,6 +43,7 @@ public class CommentMovieServiceImpl implements ICommentMovieService {
 
     private CommentDto buildCommentDto(CommentBean commentSaved) {
         return CommentDto.builder()
+                .id(commentSaved.getId())
                 .username(commentSaved.getUsername())
                 .movieId(commentSaved.getMovieId())
                 .text(commentSaved.getText())

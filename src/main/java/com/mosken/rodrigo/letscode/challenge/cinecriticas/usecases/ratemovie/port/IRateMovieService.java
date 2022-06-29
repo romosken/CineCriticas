@@ -6,4 +6,5 @@ public interface IRateMovieService {
 
     boolean ratingExists(String username, String movieId);
     RatingDto createRate(RatingDto rate);
+    RatingDto updateRate(RatingDto rate);
 }
