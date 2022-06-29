@@ -1,17 +1,13 @@
 package com.mosken.rodrigo.letscode.challenge.cinecriticas.usecases.returnomdbmovie;
 
-import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
-import lombok.NoArgsConstructor;
 
 import java.util.List;
 
 
 @Data
 @Builder
-@NoArgsConstructor
-@AllArgsConstructor
 public class OmdbResponse {
 
 
@@ -43,8 +39,6 @@ public class OmdbResponse {
 
     @Data
     @Builder
-    @NoArgsConstructor
-    @AllArgsConstructor
     public static class RatingResponse {
 
         private String source;
