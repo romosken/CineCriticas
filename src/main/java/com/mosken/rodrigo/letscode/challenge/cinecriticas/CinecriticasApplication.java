@@ -12,7 +12,6 @@ public class CinecriticasApplication {
 		SpringApplication.run(CinecriticasApplication.class, args);
 	}
 
-	//TODO: Criptografar senhas
 	//TODO: Logs na aplicação inteira
 	//TODO: aplicar a variação de acesso por perfil
 	//TODO: aplicação de segurança token e autorização

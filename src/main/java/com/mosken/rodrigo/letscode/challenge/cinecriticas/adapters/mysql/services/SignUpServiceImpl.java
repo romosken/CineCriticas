@@ -22,6 +22,11 @@ public class SignUpServiceImpl implements ISignUpService {
     }
 
     @Override
+    public boolean emailExists(String email) {
+        return userRepository.existsByEmail(email);
+    }
+
+    @Override
     public UserDto createUser(UserDto user) throws DataIntegrityViolationException {
             var bean = UserBean.builder()
                     .username(user.getUsername())

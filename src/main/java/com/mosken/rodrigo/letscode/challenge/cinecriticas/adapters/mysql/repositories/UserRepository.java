@@ -4,4 +4,5 @@ import com.mosken.rodrigo.letscode.challenge.cinecriticas.adapters.mysql.domain.
 import org.springframework.data.repository.CrudRepository;
 
 public interface UserRepository extends CrudRepository<UserBean, String> {
+    boolean existsByEmail(String email);
 }
