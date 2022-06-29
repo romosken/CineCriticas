@@ -169,15 +169,6 @@ public class CineController {
         return ResponseEntity.status(201).body(response);
     }
 
-//    @GetMapping("/add/{xpToAdd}")
-//    public ResponseEntity<AddXpResponse> addXp(
-//            @PathVariable(name = "xpToAdd") int xp
-//    ) {
-//
-//
-//        return ResponseEntity.ok(iAddXp.addXpToUser(AddXpRequest.builder().xpToAdd(xp).username("romosken").build()));
-//
-//    }
 }
 
 

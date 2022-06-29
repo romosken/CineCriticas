@@ -9,7 +9,6 @@ import lombok.Data;
 public class SignUpResponse {
 
     private String username;
-    private String password;
     private String email;
     private int xp;
     private ERole role;
