@@ -1,4 +1,4 @@
-package com.mosken.rodrigo.letscode.challenge.cinecriticas.adapters.rest.omdbapi.config;
+package com.mosken.rodrigo.letscode.challenge.cinecriticas.adapters.rest.apis.config;
 
 import feign.Request;
 import feign.Retryer;
@@ -28,11 +28,6 @@ public class CustomFeignClientConfiguration {
                 TimeUnit.SECONDS,
                 true);
     }
-
-//    @Bean
-//    public ErrorDecoder errorDecoder(){
-//        return new ApiErrorDecoder();
-//    }
 
     @Bean
     public WebMvcConfigurer corsConfiguration() {

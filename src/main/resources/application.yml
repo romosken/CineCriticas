@@ -5,6 +5,9 @@ omdb:
     api:
         url: "https://www.omdbapi.com"
         key: "b4e38b9b"
+authorization:
+    api:
+        url: "localhost:8080/authorization/v1"
 
 spring:
     jpa:

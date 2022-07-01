@@ -1,4 +1,4 @@
-package com.mosken.rodrigo.letscode.challenge.cinecriticas.adapters.rest.omdbapi.exception;
+package com.mosken.rodrigo.letscode.challenge.cinecriticas.adapters.rest.apis.omdbapi.exception;
 
 import com.mosken.rodrigo.letscode.challenge.cinecriticas.adapters.exceptions.AdapterException;
 

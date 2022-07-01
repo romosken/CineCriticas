@@ -2,7 +2,7 @@ package com.mosken.rodrigo.letscode.challenge.cinecriticas.entities.db;
 
 
 import com.mosken.rodrigo.letscode.challenge.cinecriticas.domain.enums.ERole;
-import com.mosken.rodrigo.letscode.challenge.cinecriticas.entities.exceptions.UserException;
+import com.mosken.rodrigo.letscode.challenge.cinecriticas.entities.exceptions.RoleException;
 import lombok.Builder;
 import lombok.Data;
 
@@ -25,7 +25,7 @@ public class Role {
 
     private void validateAttributeObject(Object attribute, String attributeName) {
         if (Objects.isNull(attribute))
-            throw new UserException(attributeName + " cannot be null or empty!");
+            throw new RoleException(attributeName + " cannot be null or empty!");
 
     }
 
