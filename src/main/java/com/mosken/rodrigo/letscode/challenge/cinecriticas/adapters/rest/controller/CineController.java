@@ -88,7 +88,6 @@ public class CineController {
 
     @PostMapping("/user/signup")
     public ResponseEntity<SignUpResponse> insertUser(
-            @RequestHeader(name = "Authorization") String token,
             @RequestBody UserDto user
     ) {
         var response = iSignUp.signUp(SignUpRequest.builder()
@@ -101,12 +100,11 @@ public class CineController {
 
     @PostMapping("/user/login")
     public ResponseEntity<LogInResponse> insertUser(
-            @RequestHeader(required = false) String username,
-            @RequestHeader(required = false) String email,
+            @RequestHeader String username,
             @RequestHeader String password
     ) {
         try{
-        return ResponseEntity.ok(iAuthorizationApi.logIn(username, email, password));
+        return ResponseEntity.ok(iAuthorizationApi.logIn(username, password));
     }catch(Exception e){
             throw new UnauthorizedException(e.getMessage());
         }

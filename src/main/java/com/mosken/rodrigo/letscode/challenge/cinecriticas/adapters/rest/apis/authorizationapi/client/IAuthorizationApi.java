@@ -13,8 +13,7 @@ import org.springframework.web.bind.annotation.RequestHeader;
 public interface IAuthorizationApi {
 
     @PostMapping("/login")
-    LogInResponse logIn(@RequestHeader(required = false) String username,
-                        @RequestHeader(required = false) String email,
+    LogInResponse logIn(@RequestHeader String username,
                         @RequestHeader String password);
 
     @GetMapping("/token/parse")
