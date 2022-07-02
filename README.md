@@ -2,7 +2,7 @@
 
 ## API geral de regras de negócio para o coding challenge da Let's Code
 
-### Status: Versão 1.0 finalizada!
+### Status: Versão 1.0 em finalização! (falta a verificação de tentativas de login)
 
 ## Sobre
 
@@ -32,92 +32,93 @@ Possui dez endpoints, que serão descritos no próximo tópico!
     - Retorno:
 
         1) codigo 200 OK:
-     ````
-       {
-    "comments": [
-        {
-            "id": 1,
-            "username": "romosken",
-            "text": "aaaaaaaaaaa!",
-            "likes": 0,
-            "dislikes": 0,
-            "repeated": false,
-            "movie_id": "tt1099212",
-            "comment_reference": 0,
-            "comment_reply": 0
-        }
-    ],
-    "ratings": [
-        {
-            "id": 1,
-            "username": "romosken",
-            "rating": 0,
-            "movie_id": "tt1099212"
-        }
-    ],
-    "movie_data": {
-        "id": "tt1099212",
-        "title": "Twilight",
-        "year": "2008",
-        "rated": "PG-13",
-        "released": "21 Nov 2008",
-        "runtime": "122 min",
-        "genre": "Drama, Fantasy, Romance",
-        "director": "Catherine Hardwicke",
-        "writer": "Melissa Rosenberg, Stephenie Meyer",
-        "actors": "Kristen Stewart, Robert Pattinson, Billy Burke",
-        "plot": "When Bella Swan moves to a small town in the Pacific Northwest, she falls in love with Edward Cullen, a mysterious classmate who reveals himself to be a 108-year-old vampire.",
-        "language": "English",
-        "country": "United States",
-        "awards": "32 wins & 16 nominations",
-        "poster": "https://m.media-amazon.com/images/M/MV5BMTQ2NzUxMTAxN15BMl5BanBnXkFtZTcwMzEyMTIwMg@@._V1_SX300.jpg",
-        "ratings": [
+         ````
+           {
+        "comments": [
             {
-                "source": "Internet Movie Database",
-                "value": "5.3/10"
-            },
-            {
-                "source": "Rotten Tomatoes",
-                "value": "49%"
-            },
-            {
-                "source": "Metacritic",
-                "value": "56/100"
+                "id": 1,
+                "username": "romosken",
+                "text": "aaaaaaaaaaa!",
+                "likes": 0,
+                "dislikes": 0,
+                "repeated": false,
+                "movie_id": "tt1099212",
+                "comment_reference": 0,
+                "comment_reply": 0
             }
         ],
-        "metascore": "56",
-        "type": "movie",
-        "dvd": "21 Mar 2009",
-        "production": "N/A",
-        "website": "N/A",
-        "imdb_rating": "5.3",
-        "imdb_votes": "456,067",
-        "box_office": "$193,962,473"
-     }
+        "ratings": [
+            {
+                "id": 1,
+                "username": "romosken",
+                "rating": 0,
+                "movie_id": "tt1099212"
+            }
+        ],
+        "movie_data": {
+            "id": "tt1099212",
+            "title": "Twilight",
+            "year": "2008",
+            "rated": "PG-13",
+            "released": "21 Nov 2008",
+            "runtime": "122 min",
+            "genre": "Drama, Fantasy, Romance",
+            "director": "Catherine Hardwicke",
+            "writer": "Melissa Rosenberg, Stephenie Meyer",
+            "actors": "Kristen Stewart, Robert Pattinson, Billy Burke",
+            "plot": "When Bella Swan moves to a small town in the Pacific Northwest, she falls in love with Edward Cullen, a mysterious classmate who reveals himself to be a 108-year-old vampire.",
+            "language": "English",
+            "country": "United States",
+            "awards": "32 wins & 16 nominations",
+            "poster": "https://m.media-amazon.com/images/M/MV5BMTQ2NzUxMTAxN15BMl5BanBnXkFtZTcwMzEyMTIwMg@@._V1_SX300.jpg",
+            "ratings": [
+                {
+                    "source": "Internet Movie Database",
+                    "value": "5.3/10"
+                },
+                {
+                    "source": "Rotten Tomatoes",
+                    "value": "49%"
+                },
+                {
+                    "source": "Metacritic",
+                    "value": "56/100"
+                }
+            ],
+            "metascore": "56",
+            "type": "movie",
+            "dvd": "21 Mar 2009",
+            "production": "N/A",
+            "website": "N/A",
+            "imdb_rating": "5.3",
+            "imdb_votes": "456,067",
+            "box_office": "$193,962,473"
+         }
 
-     }
-     ````
+         }
+         ````
 
-    2) codigo 404 NOT FOUND:
+        2) codigo 404 NOT FOUND:
 
-     ````
-     {
-       "timestamp": "01-07-2022 11:48:38",
-       "code": 404,
-       "status": "NOT_FOUND",
-       "message": "Movie not found!"
-     }
-     ````
-    2) codigo 400 BAD REQUEST:
+         ````
+         {
+           "timestamp": "01-07-2022 11:48:38",
+           "code": 404,
+           "status": "NOT_FOUND",
+           "message": "Movie not found!"
+         }
+         ````
+        
+        3) codigo 400 BAD REQUEST:
 
-     ````
-     {
-       "timestamp": "01-07-2022 11:48:38",
-       "code": 400,
-       "status": "BAD_REQUEST",
-       "message": "Token expired or invalid!"
-     }
-     ````
+         ````
+         {
+           "timestamp": "01-07-2022 11:48:38",
+           "code": 400,
+           "status": "BAD_REQUEST",
+           "message": "Token expired or invalid!"
+         }
+         ````
 
 2) POST cinecriticas/v1/user/signup
     - Headers :
@@ -133,37 +134,37 @@ Possui dez endpoints, que serão descritos no próximo tópico!
     - Retorno:
 
         1) codigo 200 OK:
-     ````
-     {
-     "username": "romosken5",
-     "email": "rodrigo@hotmail4.com",
-     "xp": 0,
-     "role": "LEITOR"
-     }
-     ````
+             ````
+             {
+             "username": "romosken5",
+             "email": "rodrigo@hotmail4.com",
+             "xp": 0,
+             "role": "LEITOR"
+             }
+             ````
 
-    2) codigo 400 BAD REQUEST:
+        2) codigo 400 BAD REQUEST:
 
-     ````
-     {
-       "timestamp": "01-07-2022 11:48:38",
-       "code": 400,
-       "status": "BAD_REQUEST",
-       "message": "Token expired or invalid!"
-     }
-     ````
-   3) codigo 409 CONFLICT:
+             ````
+             {
+               "timestamp": "01-07-2022 11:48:38",
+               "code": 400,
+               "status": "BAD_REQUEST",
+               "message": "Token expired or invalid!"
+             }
+             ````
+        3) codigo 409 CONFLICT:
 
-     ````
-     {
-       "timestamp": "02-07-2022 12:24:24",
-       "code": 409,
-       "status": "CONFLICT",
-       "message": "Username already exists!"
-     }
-     ````
+             ````
+             {
+               "timestamp": "02-07-2022 12:24:24",
+               "code": 409,
+               "status": "CONFLICT",
+               "message": "Username already exists!"
+             }
+             ````
 
-4) POST cinecriticas/v1/user/login
+3) POST cinecriticas/v1/user/login
     - Headers :
         1) String username (id do usuário);
         2) String password (senha do usuário).
@@ -184,7 +185,7 @@ Possui dez endpoints, que serão descritos no próximo tópico!
       }
         ````   
 
-5) POST cinecriticas/v1/rating/add
+4) POST cinecriticas/v1/rating/add
     - Headers :
         1) String Authorization (token em formato JWT);
     - body:
@@ -197,25 +198,25 @@ Possui dez endpoints, que serão descritos no próximo tópico!
       ````   
         - Retorno:
 
-            1) codigo 201 CREATED:
-      ````
-      {
-        "response": "Success inserting new rating!"
-      }
-      ````
+             1) codigo 201 CREATED:
+                  ````
+                  {
+                    "response": "Success inserting new rating!"
+                  }
+                  ````
 
-    2) codigo 400 BAD REQUEST:
+             2) codigo 400 BAD REQUEST:
 
-     ````
-     {
-       "timestamp": "01-07-2022 11:48:38",
-       "code": 400,
-       "status": "BAD_REQUEST",
-       "message": "Token expired or invalid!"
-     }
-     ````
+                 ````
+                 {
+                   "timestamp": "01-07-2022 11:48:38",
+                   "code": 400,
+                   "status": "BAD_REQUEST",
+                   "message": "Token expired or invalid!"
+                 }
+                 ````
    * Caso a avaliação já exista, o usuario nao receberá mais pontos por isso, apenas mudará a nota ao filme
-6) POST cinecriticas/v1/comment/add
+5) POST cinecriticas/v1/comment/add
     - Headers :
         1) String Authorization (token em formato JWT);
     - body:
@@ -250,7 +251,7 @@ Possui dez endpoints, que serão descritos no próximo tópico!
       
       ````
 
-    2) codigo 400 BAD REQUEST:
+            2) codigo 400 BAD REQUEST:
        ````
        {
         "timestamp": "02-07-2022 12:07:28",
@@ -260,7 +261,7 @@ Possui dez endpoints, que serão descritos no próximo tópico!
        }
        ````   
 
-7) DELETE cinecriticas/v1/delete/{id}
+6) DELETE cinecriticas/v1/delete/{id}
     - Headers :
         1) String Authorization (token em formato JWT);
     - Path Variables:
@@ -268,12 +269,12 @@ Possui dez endpoints, que serão descritos no próximo tópico!
    - Retorno:
 
        1) codigo 200 OK:
-    ````
-    {
-      "response": "The comment was successfully deleted!"
-    }
-    ````
-    2) codigo 400 BAD REQUEST:
+        ````
+            {
+             "response": "The comment was successfully deleted!"
+            }
+        ````
+        2) codigo 400 BAD REQUEST:
        ````
        {
         "timestamp": "02-07-2022 12:07:28",
@@ -282,7 +283,7 @@ Possui dez endpoints, que serão descritos no próximo tópico!
         "message": "Token invalid!"
        }
        ````   
-    3) codigo 404 NOT FOUND:
+        3) codigo 404 NOT FOUND:
        ````
        {
         "timestamp": "02-07-2022 12:08:20",
@@ -291,7 +292,7 @@ Possui dez endpoints, que serão descritos no próximo tópico!
         "message": "The comment does not exists!"
        }
        ````
-8) PATCH cinecriticas/v1/like/{id}
+7) PATCH cinecriticas/v1/like/{id}
     - Headers :
         1) String Authorization (token em formato JWT);
     - Path Variables:
@@ -299,12 +300,12 @@ Possui dez endpoints, que serão descritos no próximo tópico!
    - Retorno:
 
        1) codigo 200 OK:
-    ````
-    {
-      "response": "Success adding/removing like to comment!"
-    }
-    ````
-    2) codigo 400 BAD REQUEST:
+         ````
+        {
+          "response": "Success adding/removing like to comment!"
+        }
+        ````
+        2) codigo 400 BAD REQUEST:
        ````
        {
         "timestamp": "02-07-2022 12:07:28",
@@ -313,7 +314,7 @@ Possui dez endpoints, que serão descritos no próximo tópico!
         "message": "Token invalid!"
        }
        ````   
-    3) codigo 404 NOT FOUND:
+        3) codigo 404 NOT FOUND:
        ````
        {
         "timestamp": "02-07-2022 12:08:20",
@@ -322,7 +323,7 @@ Possui dez endpoints, que serão descritos no próximo tópico!
         "message": "The comment referenced does not exist!"
        }
        ````
-9) PATCH cinecriticas/v1/dislike/{id}
+8) PATCH cinecriticas/v1/dislike/{id}
     - Headers :
         1) String Authorization (token em formato JWT);
     - Path Variables:
@@ -330,21 +331,21 @@ Possui dez endpoints, que serão descritos no próximo tópico!
    - Retorno:
 
        1) codigo 200 OK:
-    ````
-    {
-      "response": "Success adding/removing dislike to comment!"
-    }
-    ````
-    2) codigo 400 BAD REQUEST:
-       ````
-       {
-        "timestamp": "02-07-2022 12:07:28",
-        "code": 400,
-        "status": "BAD_REQUEST",
-        "message": "Token invalid!"
-       }
-       ````   
-    3) codigo 404 NOT FOUND:
+             ````
+                {
+                "response": "Success adding/removing dislike to comment!"
+                 }
+             ````
+       2) codigo 400 BAD REQUEST:
+        ````
+         {
+          "timestamp": "02-07-2022 12:07:28",
+          "code": 400,
+          "status": "BAD_REQUEST",
+          "message": "Token invalid!"
+         }
+        ````   
+        3) codigo 404 NOT FOUND:
        ````
        {
         "timestamp": "02-07-2022 12:08:20",
@@ -353,7 +354,7 @@ Possui dez endpoints, que serão descritos no próximo tópico!
         "message": "The comment referenced does not exist!"
        }
        ````
-10) PATCH cinecriticas/v1/markasrepeated/{id}
+9) PATCH cinecriticas/v1/markasrepeated/{id}
      - Headers :
          1) String Authorization (token em formato JWT);
      - Path Variables:
@@ -361,12 +362,12 @@ Possui dez endpoints, que serão descritos no próximo tópico!
      - Retorno:
 
          1) codigo 200 OK:
-     ````
-     {
-       "response": "Success adding/removing repeated to comment!"
-     }
-     ````
-     2) codigo 400 BAD REQUEST:
+             ````
+             {
+              "response": "Success adding/removing repeated to comment!"
+             }
+            ````
+        2) codigo 400 BAD REQUEST:
         ````
         {
          "timestamp": "02-07-2022 12:07:28",
@@ -375,7 +376,7 @@ Possui dez endpoints, que serão descritos no próximo tópico!
          "message": "Token invalid!"
         }
         ````   
-     3) codigo 404 NOT FOUND:
+        3) codigo 404 NOT FOUND:
         ````
         {
          "timestamp": "02-07-2022 12:08:20",
@@ -384,7 +385,7 @@ Possui dez endpoints, que serão descritos no próximo tópico!
          "message": "The comment referenced does not exist!"
         }
         ````
-11) PATCH cinecriticas/v1/turnmoderator/{username}
+10) PATCH cinecriticas/v1/turnmoderator/{username}
     - Headers :
         1) String Authorization (token em formato JWT);
     - Path Variables:
@@ -392,29 +393,29 @@ Possui dez endpoints, que serão descritos no próximo tópico!
     - Retorno:
 
       1) codigo 200 OK:
-     ````
-     {
-    "response": "Success upgrading user!"
-     }
-     ````
+             ````
+                 {
+                "response": "Success upgrading user!"
+                 }
+             ````
       2) codigo 400 BAD REQUEST:
-     ````
-       {
-        "timestamp": "02-07-2022 12:07:28",
-        "code": 400,
-        "status": "BAD_REQUEST",
-        "message": "Token invalid!"
-       }
-       ````   
+         ````
+           {
+            "timestamp": "02-07-2022 12:07:28",
+            "code": 400,
+            "status": "BAD_REQUEST",
+            "message": "Token invalid!"
+           }
+           ````   
       3) codigo 404 NOT FOUND:
-     ````
-       {
-        "timestamp": "02-07-2022 12:08:20",
-        "code": 404,
-        "status": "NOT_FOUND",
-        "message": "The user does not exist!"
-       }
-       ````
+         ````
+           {
+            "timestamp": "02-07-2022 12:08:20",
+            "code": 404,
+            "status": "NOT_FOUND",
+            "message": "The user does not exist!"
+           }
+           ````
 
 ## Tecnologias Utilizadas
 
