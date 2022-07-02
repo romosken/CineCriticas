@@ -4,17 +4,17 @@ import com.mosken.rodrigo.letscode.challenge.cinecriticas.entities.exceptions.Us
 import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
+import lombok.Setter;
 
-import javax.persistence.*;
 import java.util.Objects;
 
 
 @Builder
 @Getter
+@Setter
 @NoArgsConstructor
 public class User {
 
-    @Id
     private String username;
     private String password;
     private String email;
@@ -34,10 +34,6 @@ public class User {
         this.username = username;
     }
 
-    public void setPassword(String password) {
-        validateAttribute(password, "PASSWORD");
-        this.password = password;
-    }
 
     public void setEmail(String email) {
         validateAttribute(email, "EMAIL");

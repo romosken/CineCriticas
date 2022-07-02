@@ -1,4 +1,4 @@
-package com.mosken.rodrigo.letscode.challenge.cinecriticas.adapters.rest.omdbapi.models;
+package com.mosken.rodrigo.letscode.challenge.cinecriticas.adapters.rest.apis.omdbapi.models;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.AllArgsConstructor;
@@ -8,8 +8,8 @@ import lombok.NoArgsConstructor;
 
 @Data
 @Builder
-@NoArgsConstructor
 @AllArgsConstructor
+@NoArgsConstructor
 public class OmdbRatings {
 
     @JsonProperty("Source")

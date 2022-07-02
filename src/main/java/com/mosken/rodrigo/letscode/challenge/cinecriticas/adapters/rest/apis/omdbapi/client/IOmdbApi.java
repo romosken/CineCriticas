@@ -1,7 +1,7 @@
-package com.mosken.rodrigo.letscode.challenge.cinecriticas.adapters.rest.omdbapi.client;
+package com.mosken.rodrigo.letscode.challenge.cinecriticas.adapters.rest.apis.omdbapi.client;
 
-import com.mosken.rodrigo.letscode.challenge.cinecriticas.adapters.rest.omdbapi.config.CustomFeignClientConfiguration;
-import com.mosken.rodrigo.letscode.challenge.cinecriticas.adapters.rest.omdbapi.models.OmdbMovie;
+import com.mosken.rodrigo.letscode.challenge.cinecriticas.adapters.rest.apis.config.CustomFeignClientConfiguration;
+import com.mosken.rodrigo.letscode.challenge.cinecriticas.adapters.rest.apis.omdbapi.models.OmdbMovie;
 import org.springframework.cloud.openfeign.FeignClient;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestParam;

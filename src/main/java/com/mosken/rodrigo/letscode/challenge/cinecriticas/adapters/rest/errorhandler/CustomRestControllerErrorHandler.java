@@ -3,6 +3,7 @@ package com.mosken.rodrigo.letscode.challenge.cinecriticas.adapters.rest.errorha
 import com.mosken.rodrigo.letscode.challenge.cinecriticas.adapters.exceptions.AdapterException;
 import com.mosken.rodrigo.letscode.challenge.cinecriticas.adapters.exceptions.DuplicateEntryException;
 import com.mosken.rodrigo.letscode.challenge.cinecriticas.adapters.exceptions.InvalidResourceException;
+import com.mosken.rodrigo.letscode.challenge.cinecriticas.adapters.exceptions.UnauthorizedException;
 import com.mosken.rodrigo.letscode.challenge.cinecriticas.adapters.rest.errorhandler.json.ApiErrorResponse;
 import com.mosken.rodrigo.letscode.challenge.cinecriticas.entities.exceptions.EntityException;
 import lombok.RequiredArgsConstructor;
@@ -37,6 +38,13 @@ public class CustomRestControllerErrorHandler {
     @ExceptionHandler(value = {AdapterException.class, NoSuchElementException.class})
     protected ResponseEntity<ApiErrorResponse> handleNotFoundException(Exception e) {
         var status = HttpStatus.NOT_FOUND;
+        var msg = retrieveMessage(e);
+        return buildResponseEntity(status, msg);
+    }
+
+    @ExceptionHandler(value = {UnauthorizedException.class})
+    protected ResponseEntity<ApiErrorResponse> handleUnauthorizedException(Exception e) {
+        var status = HttpStatus.UNAUTHORIZED;
         var msg = retrieveMessage(e);
         return buildResponseEntity(status, msg);
     }

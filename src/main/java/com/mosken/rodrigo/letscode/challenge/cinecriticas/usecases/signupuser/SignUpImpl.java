@@ -2,6 +2,8 @@ package com.mosken.rodrigo.letscode.challenge.cinecriticas.usecases.signupuser;
 
 import com.mosken.rodrigo.letscode.challenge.cinecriticas.domain.dto.UserDto;
 import com.mosken.rodrigo.letscode.challenge.cinecriticas.domain.enums.ERole;
+import com.mosken.rodrigo.letscode.challenge.cinecriticas.entities.db.Role;
+import com.mosken.rodrigo.letscode.challenge.cinecriticas.entities.db.User;
 import com.mosken.rodrigo.letscode.challenge.cinecriticas.usecases.signupuser.exception.DuplicateUserException;
 import com.mosken.rodrigo.letscode.challenge.cinecriticas.usecases.signupuser.port.ISignUpService;
 import lombok.RequiredArgsConstructor;
@@ -23,7 +25,7 @@ public class SignUpImpl implements ISignUp {
     public SignUpResponse signUp(SignUpRequest request) {
         validateRequest(request);
         var validatedUser = buildUser(request);
-        var response = iSignUpService.createUser(validatedUser);
+        var response = iSignUpService.createUser(buildUserDto(validatedUser));
         return buildSignUpResponse(response);
 
     }
@@ -44,17 +46,26 @@ public class SignUpImpl implements ISignUp {
                 .build();
     }
 
-    private UserDto buildUser(SignUpRequest request) {
-        return UserDto.builder()
+    private User buildUser(SignUpRequest request) {
+        return User.builder()
                 .username(request.getUsername())
                 .email(request.getEmail())
                 .password(encryptPassword(request.getPassword()))
                 .xp(0)
-                .role(ERole.LEITOR)
+                .role(Role.builder().name(ERole.LEITOR).build())
                 .build();
 
     }
 
+    private UserDto buildUserDto(User user) {
+        return UserDto.builder()
+                .username(user.getUsername())
+                .email(user.getEmail())
+                .password(user.getPassword())
+                .xp(user.getXp())
+                .role(user.getRole().getName())
+                .build();
+    }
     @SneakyThrows
     private String encryptPassword(String password) {
         var algorithm = MessageDigest.getInstance("SHA-256");

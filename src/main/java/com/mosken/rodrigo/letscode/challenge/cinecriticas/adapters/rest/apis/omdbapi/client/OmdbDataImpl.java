@@ -1,8 +1,8 @@
-package com.mosken.rodrigo.letscode.challenge.cinecriticas.adapters.rest.omdbapi.client;
+package com.mosken.rodrigo.letscode.challenge.cinecriticas.adapters.rest.apis.omdbapi.client;
 
-import com.mosken.rodrigo.letscode.challenge.cinecriticas.adapters.rest.omdbapi.exception.OmdbApiException;
-import com.mosken.rodrigo.letscode.challenge.cinecriticas.adapters.rest.omdbapi.models.OmdbMovie;
-import com.mosken.rodrigo.letscode.challenge.cinecriticas.adapters.rest.omdbapi.models.OmdbRatings;
+import com.mosken.rodrigo.letscode.challenge.cinecriticas.adapters.rest.apis.omdbapi.exception.OmdbApiException;
+import com.mosken.rodrigo.letscode.challenge.cinecriticas.adapters.rest.apis.omdbapi.models.OmdbMovie;
+import com.mosken.rodrigo.letscode.challenge.cinecriticas.adapters.rest.apis.omdbapi.models.OmdbRatings;
 import com.mosken.rodrigo.letscode.challenge.cinecriticas.usecases.returnomdbmovie.port.IOmdbData;
 import com.mosken.rodrigo.letscode.challenge.cinecriticas.usecases.returnomdbmovie.port.OmdbDataResponse;
 import lombok.RequiredArgsConstructor;
