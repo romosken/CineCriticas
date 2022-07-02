@@ -215,7 +215,7 @@ Possui dez endpoints, que serão descritos no próximo tópico!
      }
      ````
    * Caso a avaliação já exista, o usuario nao receberá mais pontos por isso, apenas mudará a nota ao filme
-6) GET cinecriticas/v1/comment/add
+6) POST cinecriticas/v1/comment/add
     - Headers :
         1) String Authorization (token em formato JWT);
     - body:
@@ -260,7 +260,7 @@ Possui dez endpoints, que serão descritos no próximo tópico!
        }
        ````   
 
-7) GET cinecriticas/v1/delete/{id}
+7) DELETE cinecriticas/v1/delete/{id}
     - Headers :
         1) String Authorization (token em formato JWT);
     - Path Variables:
@@ -291,7 +291,7 @@ Possui dez endpoints, que serão descritos no próximo tópico!
         "message": "The comment does not exists!"
        }
        ````
-8) GET cinecriticas/v1/like/{id}
+8) PATCH cinecriticas/v1/like/{id}
     - Headers :
         1) String Authorization (token em formato JWT);
     - Path Variables:
@@ -322,7 +322,7 @@ Possui dez endpoints, que serão descritos no próximo tópico!
         "message": "The comment referenced does not exist!"
        }
        ````
-9) GET cinecriticas/v1/dislike/{id}
+9) PATCH cinecriticas/v1/dislike/{id}
     - Headers :
         1) String Authorization (token em formato JWT);
     - Path Variables:
@@ -353,7 +353,7 @@ Possui dez endpoints, que serão descritos no próximo tópico!
         "message": "The comment referenced does not exist!"
        }
        ````
-10) GET cinecriticas/v1/markasrepeated/{id}
+10) PATCH cinecriticas/v1/markasrepeated/{id}
      - Headers :
          1) String Authorization (token em formato JWT);
      - Path Variables:
@@ -384,7 +384,7 @@ Possui dez endpoints, que serão descritos no próximo tópico!
          "message": "The comment referenced does not exist!"
         }
         ````
-11) GET cinecriticas/v1/turnmoderator/{username}
+11) PATCH cinecriticas/v1/turnmoderator/{username}
     - Headers :
         1) String Authorization (token em formato JWT);
     - Path Variables:
