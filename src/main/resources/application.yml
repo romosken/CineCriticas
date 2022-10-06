@@ -1,0 +1,21 @@
+server:
+    port: 9080
+
+omdb:
+    api:
+        url: "https://www.omdbapi.com"
+        key: "b4e38b9b"
+authorization:
+    api:
+        url: "localhost:8080/authorization/v1"
+
+spring:
+    jpa:
+        hibernate:
+            ddl-auto: none
+
+    datasource:
+        url: jdbc:mysql://localhost:3333/cinecriticas
+        username: root
+        password: root
+        driver-class-name: com.mysql.cj.jdbc.Driver
